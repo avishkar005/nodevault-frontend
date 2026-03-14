@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-geist-sans: 'DM Sans', system-ui, sans-serif;
+
+  --background: #FAFAF8;
+  --foreground: #1A1A18;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A18;
+  --primary: #1A1A18;
+  --primary-foreground: #FAFAF8;
+  --secondary: #F3F3F0;
+  --secondary-foreground: #3D3D3A;
+  --muted: #F3F3F0;
+  --muted-foreground: #8C8C87;
+  --accent: #1A1A18;
+  --accent-foreground: #FAFAF8;
+  --destructive: #DC2626;
+  --destructive-foreground: #FAFAF8;
+  --border: #E8E8E3;
+  --input: #E8E8E3;
+  --ring: #1A1A18;
+  --sidebar: #F5F5F2;
+  --radius: 0.625rem;
+
+  /* Brand accent */
+  --brand: #B5936A;
+  --brand-light: #F5EDE4;
+}
+
+.dark {
+  --background: #111110;
+  --foreground: #F0F0ED;
+  --card: #1C1C1A;
+  --card-foreground: #F0F0ED;
+  --primary: #F0F0ED;
+  --primary-foreground: #111110;
+  --secondary: #252523;
+  --secondary-foreground: #C8C8C3;
+  --muted: #252523;
+  --muted-foreground: #6B6B66;
+  --accent: #F0F0ED;
+  --accent-foreground: #111110;
+  --destructive: #EF4444;
+  --destructive-foreground: #111110;
+  --border: #2A2A28;
+  --input: #2A2A28;
+  --ring: #F0F0ED;
+  --sidebar: #161614;
+
+  --brand: #C9A77A;
+  --brand-light: #2C2418;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideInUp 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Note content formatting */
+.note-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Tag pill */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  border-color: var(--muted-foreground);
+  transform: translateY(-1px);
+}
+
+/* Input base */
+.input-base {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-size: 14px;
+  font-family: var(--font-geist-sans);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.input-base::placeholder {
+  color: var(--muted-foreground);
+}
+
+.input-base:focus {
+  border-color: var(--foreground);
+  box-shadow: 0 0 0 3px rgba(26,26,24,0.06);
+}
+
+.dark .input-base:focus {
+  box-shadow: 0 0 0 3px rgba(240,240,237,0.08);
+}
